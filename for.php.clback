@@ -1,13 +1,3 @@
-<?php include "functions.php";
-
-$background_color="fff";
-if(isset($_POST['send'])){
-//	var_dump($_POST);
-	$background_color=select_bg($_POST['background']);
-}
-
-?>
-
 
 <!DOCTYPE html>
 <html>

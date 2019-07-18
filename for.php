@@ -1,14 +1,12 @@
-<?php include "functions.php";
+<?php 
+include "functions.php";
 
-$background_color="fff";
-if(isset($_POST['send'])){
-//	var_dump($_POST);
-	$background_color=select_bg($_POST['background']);
-}
+$users=get_user();
+
+
+
 
 ?>
-
-
 <!DOCTYPE html>
 <html>
 
@@ -29,18 +27,44 @@ if(isset($_POST['send'])){
     <link href="css/sb-admin.css" rel="stylesheet">
     
     <link  rel="stylesheet" href="<?php  echo  $background_color.'.css' ?>"/>
-
+<style>
+	table,tr,td,th{
+		border:1px solid #dddddd;
+		
+	}
+</style>
 </head>
-<body  style="background:<?php echo  $background_color; ?> ">
-	<form action="" method="post">
-	<input  type="radio" name="background" value="blue"/>blue
-	<input  type="radio" name="background" value="red"/>red
-	<input  type="radio" name="background" value="green"/>green
-	<input  type="submit" name="send" value="send"/>
-	</form>
+
+<body>
+<table>
+	<tr>
+		<th>id</th>	
+<th>name</th>
+<th>email</th>
+<th>action</th>
+
+		
+	</tr>
+	
+
+	<?php foreach($users as $user): ?>
+	<tr>
+		<td><?php echo $user['id']; ?> </td>
+		<td><?php echo $user['name']; ?> </td>
+		<td><?php echo $user['email']; ?> </td>
+		<td>
+		<a href="#">deleat</a>
+		<a  href="#">edite</a>
+		<a  href="#">approv</a>
+		 </td>
+		
+	</tr>
 	
 	
 	
+	 
+	<?php endforeach;?>
+</table>	
 
 </body>
 
