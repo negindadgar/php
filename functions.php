@@ -1,8 +1,8 @@
 <?php
 function is_user_login(){
-	return ;
+	return true;
 }
-
+  
 function select_bg($color_name){
 	
 	$result = "";
