@@ -42,4 +42,73 @@ function get_user(){
 }
 
 
+if($localhost){
+	define('DGKAR_DB_SERVER','192.168.66.16');
+	define('DGKAR_DB_USER','dgkar');
+	define('DGKAR_DB_PASS' ,'RdAg-AeFt#1@9745');
+	define('DGKAR_DB_NAME', 'dgkar');
+}
+else{
+	define('DGKAR_DB_SERVER','172.20.10.4');
+	define('DGKAR_DB_USER','dgkar');
+	define('DGKAR_DB_PASS' ,'RdAg-AeFt#1@9745');
+	define('DGKAR_DB_NAME', 'dgkar');
+}
+
+function DGExec($Query){
+	// Create connection
+	$conn = new mysqli(DGKAR_DB_SERVER, DGKAR_DB_USER, DGKAR_DB_PASS, DGKAR_DB_NAME);
+	$conn->set_charset("utf8");
+	if($conn->connect_error){
+		die("Connection failed: " . $conn->connect_error);
+	} 
+	$sql = $Query;
+	$result = $conn->query($sql);
+	$conn->close();
+	return $result;
+}	
+
+
+function SelectQuery($Query){
+
+	// Create connection
+	$conn = new mysqli(DGKAR_DB_SERVER, DGKAR_DB_USER, DGKAR_DB_PASS, DGKAR_DB_NAME);
+	$conn->set_charset("utf8");
+	// Check connection
+	if($conn->connect_error){
+		die("Connection failed: " . $conn->connect_error);
+	} 
+	$sql = $Query;
+	$result = $conn->query($sql);
+	$conn->close();
+	return $result;
+}
+function WordPressExec($Query){
+	// Create connection
+	$conn = new mysqli(WordPress_DB_SERVER, WordPress_DB_USER, WordPress_DB_PASS, WordPress_DB_NAME);
+	$conn->set_charset("utf8");
+	if($conn->connect_error){
+		die("Connection failed: " . $conn->connect_error);
+	} 
+	$sql = $Query;
+	$result = $conn->query($sql);
+	$conn->close();
+	return $result;
+}	
+
+
+function WordPressSelectQuery($Query){
+
+	// Create connection
+	$conn = new mysqli(WordPress_DB_SERVER, WordPress_DB_USER, WordPress_DB_PASS, WordPress_DB_NAME);
+	$conn->set_charset("utf8");
+	// Check connection
+	if($conn->connect_error){
+		die("Connection failed: " . $conn->connect_error);
+	} 
+	$sql = $Query;
+	$result = $conn->query($sql);
+	$conn->close();
+	return $result;
+}
 ?>
